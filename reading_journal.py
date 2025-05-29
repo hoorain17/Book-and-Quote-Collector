@@ -33,7 +33,8 @@ st.image(BANNER_IMAGE_URL, use_container_width=True)
 st.markdown("""
     <h1 style='text-align: center; color: #4B8BBE;'>📚 Book & Quote Journal</h1>
     <p style='text-align: center; color: gray;'>Track books you’ve read and collect quotes that inspire you.</p>
-    <hr style='margin-top: 20px; margin-bottom: 40px;'>
+    st.markdown("<hr style='margin-top: 20px; margin-bottom: 40px;'>", unsafe_allow_html=True)
+
 """, unsafe_allow_html=True)
 
 # --- Sidebar Navigation ---
