@@ -4,7 +4,12 @@ import os
 from datetime import datetime
 
 # --- Absolute path to your banner image ---
-BANNER_IMAGE_PATH = st.image("https://raw.githubusercontent.com/hoorain17/Book-and-Quote-Collector/main/image/banner.jpg")
+import streamlit as st
+
+BANNER_IMAGE_URL = "https://raw.githubusercontent.com/hoorain17/Book-and-Quote-Collector/main/image/banner.jpg"
+
+# Don't check with os.path.exists()
+st.image(BANNER_IMAGE_URL)
 
 # --- File Paths ---
 BOOKS_FILE = "data/books.json"
