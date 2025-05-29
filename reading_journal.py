@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # --- Absolute path to your banner image ---
-BANNER_IMAGE_PATH = "https://raw.githubusercontent.com/hoorain17/Book-and-Quote-Collector/blob/main/image/banner.jpg"
+BANNER_IMAGE_PATH = "https://raw.githubusercontent.com/hoorain17/Book-and-Quote-Collector/main/image/banner.jpg"
 
 # --- File Paths ---
 BOOKS_FILE = "data/books.json"
