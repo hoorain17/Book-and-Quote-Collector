@@ -3,13 +3,8 @@ import json
 import os
 from datetime import datetime
 
-
-# Define the image URL first
+# --- Correct Banner Image URL from GitHub (Raw format) ---
 BANNER_IMAGE_URL = "https://raw.githubusercontent.com/hoorain17/Book-and-Quote-Collector/main/image/banner.jpg"
-
-# Then use it
-st.image(BANNER_IMAGE_URL)
-
 
 # --- File Paths ---
 BOOKS_FILE = "data/books.json"
@@ -33,11 +28,7 @@ def save_data(data, file_path):
         json.dump(data, f, indent=4)
 
 # --- App Header with Image ---
-if os.path.exists(BANNER_IMAGE_PATH):
-    st.image(BANNER_IMAGE_PATH, use_container_width=True)
-
-else:
-    st.warning("Banner image not found at the specified path.")
+st.image(BANNER_IMAGE_URL, use_container_width=True)
 
 st.markdown("""
     <h1 style='text-align: center; color: #4B8BBE;'>📚 Book & Quote Journal</h1>
@@ -82,7 +73,6 @@ def view_books_st(books):
         for book in books:
             st.markdown(f"**📗 {book.get('title', 'No Title')}** by {book.get('author', 'Unknown Author')} ({book.get('genre', 'Unknown')})")
             st.markdown(f"📅 Read on: {book.get('date_read', 'Unknown Date')} &nbsp; ⭐ Rating: {book.get('rating', 'N/A')}")
-
             st.markdown("---")
     else:
         st.info("No books found.")
@@ -118,7 +108,6 @@ def update_book_st(books):
 
     date_read = st.date_input("Date Read", datetime.strptime(selected_book.get("date_read", datetime.today().strftime("%Y-%m-%d")), "%Y-%m-%d"))
     rating = st.slider("Rating", 1, 10, selected_book.get("rating", 5))
-
 
     if st.button("✅ Update Book"):
         selected_book.update({
@@ -177,8 +166,7 @@ def search_quotes_st(quotes):
     query = st.text_input("Search quotes or book titles")
     if query:
         results = [q for q in quotes if query.lower() in q.get('quote', '').lower() or
-           query.lower() in q.get('book_title', '').lower()]
-
+                   query.lower() in q.get('book_title', '').lower()]
         if results:
             for q in results:
                 st.markdown(f"📘 **{q['book_title']}**")
